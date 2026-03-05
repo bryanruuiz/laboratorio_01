@@ -21,3 +21,10 @@ class Reserva(BaseModel):
     hora_fin: time
     personas: int
     estado: str
+    
+# Endpoint POST para registrar una nueva reserva
+@app.post("/reservas")
+def crear_reserva(reserva: Reserva):
+    # Convertimos el modelo a diccionario y lo guardamos en la memoria
+    reservas_db.append(reserva.model_dump())
+    return {"mensaje": "Reserva registrada con éxito", "datos": reserva}    
