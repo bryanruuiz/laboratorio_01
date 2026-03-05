@@ -28,3 +28,8 @@ def crear_reserva(reserva: Reserva):
     # Convertimos el modelo a diccionario y lo guardamos en la memoria
     reservas_db.append(reserva.model_dump())
     return {"mensaje": "Reserva registrada con éxito", "datos": reserva}    
+
+# Endpoint GET: Devuelve todas las reservas guardadas
+@app.get("/reservas")
+def obtener_reservas():
+    return reservas_db
