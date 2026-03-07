@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel,StrictInt
 from datetime import date, time
 
 # Inicializamos la aplicación FastAPI
@@ -13,13 +13,13 @@ reservas_db = []
 
 # Definición del modelo de datos con Pydantic (Actividad 2 y Punto 2 de la Actividad 3)
 class Reserva(BaseModel):
-    id_reserva: int
-    id_sala: int
-    id_usuario: int
+    id_reserva: StrictInt
+    id_sala: StrictInt
+    id_usuario: StrictInt
     fecha: date
     hora_inicio: time
     hora_fin: time
-    personas: int
+    personas:StrictInt
     estado: str
     
 # Endpoint POST para registrar una nueva reserva
